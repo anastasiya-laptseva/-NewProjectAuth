@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E8F03E623FDE5790085EC9C /* StudentProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F03E523FDE5790085EC9C /* StudentProfileViewController.swift */; };
+		0E8F03E823FE00320085EC9C /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F03E723FE00310085EC9C /* Validator.swift */; };
+		0E8F03ED23FEE8AA0085EC9C /* PfofileManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F03EC23FEE8AA0085EC9C /* PfofileManagerViewController.swift */; };
 		0E953F4123FA602500A3EF72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E953F4023FA602500A3EF72 /* AppDelegate.swift */; };
 		0E953F4323FA602500A3EF72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E953F4223FA602500A3EF72 /* SceneDelegate.swift */; };
 		0E953F4523FA602500A3EF72 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E953F4423FA602500A3EF72 /* ViewController.swift */; };
@@ -16,8 +19,6 @@
 		0E953F5523FAE35100A3EF72 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E953F5423FAE35100A3EF72 /* TableViewController.swift */; };
 		0E953F5723FAF21800A3EF72 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E953F5623FAF21800A3EF72 /* ProfileViewController.swift */; };
 		0E953F5923FB3A9700A3EF72 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E953F5823FB3A9700A3EF72 /* WelcomeViewController.swift */; };
-		0E953F5B23FC47F800A3EF72 /* StudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E953F5A23FC47F800A3EF72 /* StudentsViewController.swift */; };
-		0E953F6123FC4CCE00A3EF72 /* Имена.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0E953F6023FC4CCE00A3EF72 /* Имена.rtf */; };
 		0E953F6323FC4D5000A3EF72 /* Name.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E953F6223FC4D5000A3EF72 /* Name.txt */; };
 		0E953F6523FC59AE00A3EF72 /* CodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E953F6423FC59AE00A3EF72 /* CodeTableViewCell.swift */; };
 		0E953F6823FC5CAE00A3EF72 /* XIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E953F6623FC5CAE00A3EF72 /* XIB.swift */; };
@@ -25,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E8F03E523FDE5790085EC9C /* StudentProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileViewController.swift; sourceTree = "<group>"; };
+		0E8F03E723FE00310085EC9C /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		0E8F03EC23FEE8AA0085EC9C /* PfofileManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PfofileManagerViewController.swift; sourceTree = "<group>"; };
 		0E953F3D23FA602500A3EF72 /* NewProjectAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewProjectAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E953F4023FA602500A3EF72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E953F4223FA602500A3EF72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,8 +40,6 @@
 		0E953F5423FAE35100A3EF72 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		0E953F5623FAF21800A3EF72 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0E953F5823FB3A9700A3EF72 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		0E953F5A23FC47F800A3EF72 /* StudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsViewController.swift; sourceTree = "<group>"; };
-		0E953F6023FC4CCE00A3EF72 /* Имена.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = "Имена.rtf"; path = "../../../Имена.rtf"; sourceTree = "<group>"; };
 		0E953F6223FC4D5000A3EF72 /* Name.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Name.txt; sourceTree = "<group>"; };
 		0E953F6423FC59AE00A3EF72 /* CodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTableViewCell.swift; sourceTree = "<group>"; };
 		0E953F6623FC5CAE00A3EF72 /* XIB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIB.swift; sourceTree = "<group>"; };
@@ -55,9 +57,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E8F03E923FE01AD0085EC9C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				0E8F03E723FE00310085EC9C /* Validator.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		0E953F3423FA602400A3EF72 = {
 			isa = PBXGroup;
 			children = (
+				0E8F03EC23FEE8AA0085EC9C /* PfofileManagerViewController.swift */,
 				0E953F6223FC4D5000A3EF72 /* Name.txt */,
 				0E953F5423FAE35100A3EF72 /* TableViewController.swift */,
 				0E953F5623FAF21800A3EF72 /* ProfileViewController.swift */,
@@ -78,18 +89,18 @@
 		0E953F3F23FA602500A3EF72 /* NewProjectAuth */ = {
 			isa = PBXGroup;
 			children = (
+				0E8F03E923FE01AD0085EC9C /* Modules */,
 				0E953F4023FA602500A3EF72 /* AppDelegate.swift */,
 				0E953F4223FA602500A3EF72 /* SceneDelegate.swift */,
 				0E953F4423FA602500A3EF72 /* ViewController.swift */,
 				0E953F4623FA602500A3EF72 /* Main.storyboard */,
-				0E953F5A23FC47F800A3EF72 /* StudentsViewController.swift */,
 				0E953F4923FA602800A3EF72 /* Assets.xcassets */,
 				0E953F4B23FA602800A3EF72 /* LaunchScreen.storyboard */,
 				0E953F4E23FA602800A3EF72 /* Info.plist */,
 				0E953F5823FB3A9700A3EF72 /* WelcomeViewController.swift */,
-				0E953F6023FC4CCE00A3EF72 /* Имена.rtf */,
 				0E953F6623FC5CAE00A3EF72 /* XIB.swift */,
 				0E953F6723FC5CAE00A3EF72 /* XIB.xib */,
+				0E8F03E523FDE5790085EC9C /* StudentProfileViewController.swift */,
 			);
 			path = NewProjectAuth;
 			sourceTree = "<group>";
@@ -153,7 +164,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E953F6323FC4D5000A3EF72 /* Name.txt in Resources */,
-				0E953F6123FC4CCE00A3EF72 /* Имена.rtf in Resources */,
 				0E953F4D23FA602800A3EF72 /* LaunchScreen.storyboard in Resources */,
 				0E953F6923FC5CAE00A3EF72 /* XIB.xib in Resources */,
 				0E953F4A23FA602800A3EF72 /* Assets.xcassets in Resources */,
@@ -172,9 +182,11 @@
 				0E953F4523FA602500A3EF72 /* ViewController.swift in Sources */,
 				0E953F4123FA602500A3EF72 /* AppDelegate.swift in Sources */,
 				0E953F5723FAF21800A3EF72 /* ProfileViewController.swift in Sources */,
+				0E8F03E623FDE5790085EC9C /* StudentProfileViewController.swift in Sources */,
+				0E8F03E823FE00320085EC9C /* Validator.swift in Sources */,
 				0E953F5923FB3A9700A3EF72 /* WelcomeViewController.swift in Sources */,
 				0E953F4323FA602500A3EF72 /* SceneDelegate.swift in Sources */,
-				0E953F5B23FC47F800A3EF72 /* StudentsViewController.swift in Sources */,
+				0E8F03ED23FEE8AA0085EC9C /* PfofileManagerViewController.swift in Sources */,
 				0E953F6823FC5CAE00A3EF72 /* XIB.swift in Sources */,
 				0E953F5523FAE35100A3EF72 /* TableViewController.swift in Sources */,
 			);

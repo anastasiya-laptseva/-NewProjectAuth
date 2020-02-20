@@ -12,24 +12,28 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
+    @IBOutlet weak var sequreIcon: UIButton!
+    
+    var isSecure: Bool = true
     
     static var loginText = ""
     static var passText = ""
-
+    
+    let validator = Validator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func clickLogin(_ sender: Any) {
-        if(CheckLogin(textField: loginTextField)){
-            ShowAlert(text: "Invalid login!")
+    @IBAction func clickSignIn(_ sender: Any) {
+        if(validator.CheckLogin(text: loginTextField.text ?? "")){
+            validator.ShowAlert(text: "Invalid login! The field must not be empty.", self)
             return
         }
         
-        if(CheckPassword(textField: PasswordTextField)){
-            ShowAlert(text: "Invalid password!")
+        if(validator.CheckPassword(text: PasswordTextField.text ?? "", maxLength: 6)){
+            validator.ShowAlert(text: "Invalid password! Password must contain at least 6 characters.", self)
             return
         }
         
@@ -44,31 +48,27 @@ class ViewController: UIViewController {
         window?.rootViewController = controller
     }
     
-    func CheckLogin(textField: UITextField) -> Bool {
-        if textField.text?.isEmpty ?? false
-        {
-            return true
-        }
-        return false
+    @IBAction func EditingChangedLogin(_ sender: Any) {
+        print(loginTextField.text ?? "")
+        validator.validateTextFieldLetter(textField: loginTextField)
+    }
+    @IBAction func EditingChangedPassword(_ sender: Any) {
+        print(PasswordTextField.text ?? "")
     }
     
-    func CheckPassword(textField: UITextField) -> Bool {
-        if textField.text?.count ?? 0 <= 6
-        {
-            return true
-        }
-        return false
-    }
     
-    func ShowAlert(text: String) -> Void {
-        let alert = UIAlertController(title: "Error", message: text, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Sorry", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
    
+    @IBAction func sequreIconClick(_ sender: Any) {
+        isSecure = !isSecure
+        PasswordTextField.isSecureTextEntry = isSecure;
+        if let image = UIImage(named: isSecure ? "lock (1)" : "lock") as UIImage?{
+            sequreIcon.setImage(image, for: .normal)
+    }
+    
     
     
 }
 
+}
