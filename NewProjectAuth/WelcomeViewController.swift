@@ -11,6 +11,8 @@ import UIKit
 class WelcomeViewController: UIViewController {
     @IBOutlet weak var welcomeLabel: UILabel!
     
+    static var myProfile : Student?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

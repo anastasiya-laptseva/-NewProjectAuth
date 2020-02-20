@@ -118,6 +118,7 @@ class TableViewController: UITableViewController{
         if segue.identifier == segueStudentId{
             let studentProfile = segue.destination as! StudentProfileViewController
             studentProfile.student = selectedStudent
+            studentProfile.isEditProfile = false
         }
     }
     

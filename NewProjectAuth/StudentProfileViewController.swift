@@ -8,19 +8,96 @@
 
 import UIKit
 
-class StudentProfileViewController: UIViewController {
+class StudentProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    var student: Student?
-    var isEditProfile: Bool?
-    
+    //MARK: PreviewComponents
     @IBOutlet weak var labelNameSurname: UILabel!
     @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     
+    
+    //MARK: EditComponents
+    @IBOutlet weak var nameSurnameEdit: UITextField!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var photoButton: UIButton!
+    @IBOutlet weak var ageEdit: UITextField!
+    @IBOutlet weak var genderEdit: UISegmentedControl!
+    @IBOutlet weak var infoEdit: UITextField!
+    
+    //MARK: Variables
+    var student: Student?
+    var isEditProfile: Bool?
+    var imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ShowComponents()
+        if(isEditProfile == false){
+            LoadProfile()
+        }
+        else{
+            
+        }
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func changeGender(_ sender: Any) {
+        print(genderEdit.selectedSegmentIndex)
+    }
+    
+    @IBAction func galleryClick(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            print("Button capture")
+
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    @IBAction func photoClick(_ sender: Any) {
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            imagePicker.sourceType = .camera
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        else{
+            print("Camera is not Available")
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("\(info)")
+        if let image = info[.originalImage] as? UIImage {
+            photoImage.image = image
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func ShowComponents() -> Void {
+        let showProfile = isEditProfile ?? false
+        
+        labelNameSurname.isHidden = showProfile
+        
+        let showEdit = isEditProfile == false
+        
+        nameSurnameEdit.isHidden = showEdit
+        photoButton.isHidden = showEdit
+        cameraButton.isHidden = showEdit
+        ageEdit.isHidden = showEdit
+        genderEdit.isHidden = showEdit
+        infoEdit.isHidden = showEdit
+    }
+    
+    func LoadProfile() -> Void {
         if  let studentCurrent = student{
             photoImage.image = UIImage(named: studentCurrent.imageName)
             labelNameSurname.text = "\(studentCurrent.name) \(studentCurrent.surname)"
@@ -28,8 +105,6 @@ class StudentProfileViewController: UIViewController {
             genderLabel.text = "Gender: \(studentCurrent.gender)"
             infoLabel.text = "Info: \(studentCurrent.info)"
         }
-        
-        // Do any additional setup after loading the view.
     }
     
 
