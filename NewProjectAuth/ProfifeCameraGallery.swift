@@ -8,7 +8,9 @@
 
 import UIKit
 
-class StudentProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfifeCameraGallery: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBOutlet weak var profileView: UIView!
     
     //MARK: PreviewComponents
     @IBOutlet weak var labelNameSurname: UILabel!
@@ -16,7 +18,6 @@ class StudentProfileViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
-    
     
     //MARK: EditComponents
     @IBOutlet weak var nameSurnameEdit: UITextField!
@@ -28,11 +29,16 @@ class StudentProfileViewController: UIViewController, UIImagePickerControllerDel
     
     //MARK: Variables
     var student: Student?
+    var color: UIColor?
     var isEditProfile: Bool?
     var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let colorView = color{
+            profileView.backgroundColor = colorView
+        }
         
         ShowComponents()
         if(isEditProfile == false){

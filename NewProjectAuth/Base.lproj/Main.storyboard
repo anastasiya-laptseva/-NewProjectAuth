@@ -215,11 +215,11 @@
             <objects>
                 <tableViewController id="GkT-Bt-oFE" customClass="TableViewController" customModule="NewProjectAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XWK-3H-zK4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="yellow" textLabel="iZj-pG-xMI" style="IBUITableViewCellStyleDefault" id="lzV-7i-Knv" userLabel="yellow">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="iZj-pG-xMI" style="IBUITableViewCellStyleDefault" id="lzV-7i-Knv" userLabel="Cell">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lzV-7i-Knv" id="6DP-tK-zsi">
@@ -235,43 +235,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.99705451726913452" green="0.98919238719925873" blue="0.6068608375017287" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="pink" textLabel="TG4-lc-Fbb" style="IBUITableViewCellStyleDefault" id="Cfw-fe-cLS">
-                                <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cfw-fe-cLS" id="fLe-Vv-Hdz">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TG4-lc-Fbb">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.91901495921243481" green="0.74789097065198518" blue="0.92133218050003052" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="blue" textLabel="x1A-4T-CA1" style="IBUITableViewCellStyleDefault" id="87a-Si-fsh">
-                                <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="87a-Si-fsh" id="94f-4U-RbY">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x1A-4T-CA1">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -288,10 +251,10 @@
             </objects>
             <point key="canvasLocation" x="2432" y="116"/>
         </scene>
-        <!--Student Profile View Controller-->
+        <!--Profife Camera Gallery-->
         <scene sceneID="LQE-2N-8jm">
             <objects>
-                <viewController id="XBA-5B-mLg" customClass="StudentProfileViewController" customModule="NewProjectAuth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XBA-5B-mLg" customClass="ProfifeCameraGallery" customModule="NewProjectAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GvX-u0-e56">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -469,6 +432,7 @@
                         <outlet property="nameSurnameEdit" destination="UOR-Aa-729" id="7o3-Q6-hRK"/>
                         <outlet property="photoButton" destination="D4M-Pz-UJy" id="kgb-a1-476"/>
                         <outlet property="photoImage" destination="Sfi-U6-sIJ" id="qyA-j8-cOQ"/>
+                        <outlet property="profileView" destination="uzv-9U-jho" id="8Us-Z2-3ES"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTX-BG-J7A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -483,6 +447,6 @@
         <image name="takePicture" width="313.66665649414062" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="G0z-GC-E3L"/>
+        <segue reference="vcV-QX-3S2"/>
     </inferredMetricsTieBreakers>
 </document>

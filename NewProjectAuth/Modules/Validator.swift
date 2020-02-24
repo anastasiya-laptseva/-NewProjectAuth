@@ -19,9 +19,6 @@ class Validator {
                 textField.text = text
             }
         }
-        
-        
-        
     }
     
     func CheckLogin(text: String) -> Bool {
@@ -31,14 +28,6 @@ class Validator {
         }
         return false
     }
-    
-//    func CheckLogin2(text: String) -> Bool {
-//        if text.
-//        {
-//            return true
-//        }
-//        return false
-//    }
     
     func CheckPassword(text: String, maxLength: Int) -> Bool {
         if text.count <= maxLength
