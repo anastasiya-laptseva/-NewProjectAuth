@@ -12,8 +12,3 @@ protocol StudentProtocolDataSource: UITableViewDataSource {
     
 }
 
-extension StudentProtocolDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 
-    }
-}

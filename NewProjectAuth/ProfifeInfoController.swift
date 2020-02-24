@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfifeCameraGallery: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfifeInfoController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var profileView: UIView!
     
@@ -45,7 +45,7 @@ class ProfifeCameraGallery: UIViewController, UIImagePickerControllerDelegate, U
             LoadProfile()
         }
         else{
-            
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
         }
         
         // Do any additional setup after loading the view.
@@ -111,6 +111,16 @@ class ProfifeCameraGallery: UIViewController, UIImagePickerControllerDelegate, U
             genderLabel.text = "Gender: \(studentCurrent.gender)"
             infoLabel.text = "Info: \(studentCurrent.info)"
         }
+    }
+    
+     @objc func addTapped() -> Void {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(nameSurnameEdit.text, forKey: "nameSurname")
+//        userDefaults.set(photoImage.image.path, forKey: "imagePath")
+        userDefaults.set(ageEdit.text, forKey: "age")
+//        userDefaults.set(genderEdit, forKey: "gender")
+        userDefaults.set(infoEdit.text, forKey: "info")
+        userDefaults.synchronize()
     }
     
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UITableViewController{
+class TableViewController: UITableViewController, StudentProtocolDataSource{
     let segueID = "profileVC"
     let segueStudentId = "studentProfile"
     let contentManager = JsonManager()
@@ -87,14 +87,15 @@ class TableViewController: UITableViewController{
         return TableViewController.arrayStudents?.count ?? 0
     }
     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell
         cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
+
         guard let student = TableViewController.arrayStudents?[indexPath.row] else {
             return cell
         }
-        
+
         switch student.getGender() {
             case .male:
                 cell.backgroundColor = genderPrototypes[2].bacgkroundColor
@@ -106,8 +107,8 @@ class TableViewController: UITableViewController{
                 cell.backgroundColor = genderPrototypes[0].bacgkroundColor
                 break
         }
-        
-        
+
+
         cell.textLabel?.text =  "\(student.name) \(student.surname)"
         return cell
     }
@@ -133,7 +134,7 @@ class TableViewController: UITableViewController{
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == segueStudentId{
-            let studentProfile = segue.destination as! ProfifeCameraGallery
+            let studentProfile = segue.destination as! ProfifeInfoController
             studentProfile.student = selectedStudent
             studentProfile.isEditProfile = false
             studentProfile.color = selectedColor

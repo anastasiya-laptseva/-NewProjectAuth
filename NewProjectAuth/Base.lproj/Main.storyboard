@@ -215,7 +215,7 @@
             <objects>
                 <tableViewController id="GkT-Bt-oFE" customClass="TableViewController" customModule="NewProjectAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XWK-3H-zK4">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -251,10 +251,10 @@
             </objects>
             <point key="canvasLocation" x="2432" y="116"/>
         </scene>
-        <!--Profife Camera Gallery-->
+        <!--Profife Info Controller-->
         <scene sceneID="LQE-2N-8jm">
             <objects>
-                <viewController id="XBA-5B-mLg" customClass="ProfifeCameraGallery" customModule="NewProjectAuth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XBA-5B-mLg" customClass="ProfifeInfoController" customModule="NewProjectAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GvX-u0-e56">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

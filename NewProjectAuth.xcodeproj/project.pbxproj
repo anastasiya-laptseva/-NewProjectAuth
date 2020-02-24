@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E8F03E623FDE5790085EC9C /* ProfifeCameraGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F03E523FDE5790085EC9C /* ProfifeCameraGallery.swift */; };
+		0E8F03E623FDE5790085EC9C /* ProfifeInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F03E523FDE5790085EC9C /* ProfifeInfoController.swift */; };
 		0E8F03E823FE00320085EC9C /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F03E723FE00310085EC9C /* Validator.swift */; };
 		0E8F03ED23FEE8AA0085EC9C /* PfofileManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F03EC23FEE8AA0085EC9C /* PfofileManagerViewController.swift */; };
 		0E8F03EF24030DA30085EC9C /* Prototypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F03EE24030DA30085EC9C /* Prototypes.swift */; };
@@ -30,7 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E8F03E523FDE5790085EC9C /* ProfifeCameraGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfifeCameraGallery.swift; sourceTree = "<group>"; };
+		0E8F03E523FDE5790085EC9C /* ProfifeInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfifeInfoController.swift; sourceTree = "<group>"; };
 		0E8F03E723FE00310085EC9C /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		0E8F03EC23FEE8AA0085EC9C /* PfofileManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PfofileManagerViewController.swift; sourceTree = "<group>"; };
 		0E8F03EE24030DA30085EC9C /* Prototypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototypes.swift; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 				0E953F5423FAE35100A3EF72 /* TableViewController.swift */,
 				0E953F5623FAF21800A3EF72 /* ProfileViewController.swift */,
 				0E8F03EC23FEE8AA0085EC9C /* PfofileManagerViewController.swift */,
-				0E8F03E523FDE5790085EC9C /* ProfifeCameraGallery.swift */,
+				0E8F03E523FDE5790085EC9C /* ProfifeInfoController.swift */,
 				0E953F4E23FA602800A3EF72 /* Info.plist */,
 				0E953F6623FC5CAE00A3EF72 /* XIB.swift */,
 				0E953F6723FC5CAE00A3EF72 /* XIB.xib */,
@@ -213,7 +213,7 @@
 				0EF21C042404003F00FDAF2E /* StudentProtocolDataSource.swift in Sources */,
 				0E953F4123FA602500A3EF72 /* AppDelegate.swift in Sources */,
 				0E953F5723FAF21800A3EF72 /* ProfileViewController.swift in Sources */,
-				0E8F03E623FDE5790085EC9C /* ProfifeCameraGallery.swift in Sources */,
+				0E8F03E623FDE5790085EC9C /* ProfifeInfoController.swift in Sources */,
 				0E8F03E823FE00320085EC9C /* Validator.swift in Sources */,
 				0E953F5923FB3A9700A3EF72 /* WelcomeViewController.swift in Sources */,
 				0E8F03F1240315630085EC9C /* Extensions.swift in Sources */,
