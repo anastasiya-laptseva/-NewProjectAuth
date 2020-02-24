@@ -40,9 +40,9 @@ class ProfifeInfoController: UIViewController, UIImagePickerControllerDelegate, 
             profileView.backgroundColor = colorView
         }
         
-        ShowComponents()
+        showComponents()
         if(isEditProfile == false){
-            LoadProfile()
+            loadProfile()
         }
         else{
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
@@ -88,7 +88,7 @@ class ProfifeInfoController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    func ShowComponents() -> Void {
+    func showComponents() -> Void {
         let showProfile = isEditProfile ?? false
         
         labelNameSurname.isHidden = showProfile
@@ -103,7 +103,7 @@ class ProfifeInfoController: UIViewController, UIImagePickerControllerDelegate, 
         infoEdit.isHidden = showEdit
     }
     
-    func LoadProfile() -> Void {
+    func loadProfile() -> Void {
         if  let studentCurrent = student{
             photoImage.image = UIImage(named: studentCurrent.imageName)
             labelNameSurname.text = "\(studentCurrent.name) \(studentCurrent.surname)"

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UITableViewController, StudentProtocolDataSource{
+class TableViewController: UITableViewController {
     let segueID = "profileVC"
     let segueStudentId = "studentProfile"
     let contentManager = JsonManager()

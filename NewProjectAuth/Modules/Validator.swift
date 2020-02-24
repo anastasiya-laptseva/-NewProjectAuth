@@ -14,7 +14,7 @@ class Validator {
         let set = NSCharacterSet.init(charactersIn: "ABCDEFGHIJKLMONPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ").inverted
         
         if var text = textField.text{
-            if text.rangeOfCharacter(from: set) ?? nil != nil {
+            if text.rangeOfCharacter(from: set) != nil {
                 text.removeLast()
                 textField.text = text
             }
