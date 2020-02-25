@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
@@ -37,8 +37,8 @@ class ViewController: UIViewController {
             return
         }
         
-        ViewController.loginText = loginTextField.text ?? "Incognito"
-        ViewController.passText = PasswordTextField.text ?? "Incognito"
+        LoginViewController.loginText = loginTextField.text ?? "Incognito"
+        LoginViewController.passText = PasswordTextField.text ?? "Incognito"
         
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

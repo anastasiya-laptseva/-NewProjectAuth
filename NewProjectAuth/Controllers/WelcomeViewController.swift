@@ -1,31 +1,22 @@
 //
-//  ProfileViewController.swift
+//  WelcomeViewController.swift
 //  NewProjectAuth
 //
-//  Created by Anastasiya Laptseva on 2/17/20.
+//  Created by Anastasiya Laptseva on 2/18/20.
 //  Copyright © 2020 Anastasiya Laptseva. All rights reserved.
 //
 
 import UIKit
 
-
-
-class ProfileViewController: UIViewController {
+class WelcomeViewController: UIViewController {
+    @IBOutlet weak var welcomeLabel: UILabel!
     
-    struct Profile {
-        var name: String
-        var surname: String
-        var age: Int
-        var email: String
-    }
-    
-    
+    static var myProfile : Student?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        var profile = Profile.init(name: "Alex", surname: "Laptev", age: 28, email: "free.games.app@gmail.com")
-//        print(profile.email)
+        welcomeLabel.text = "Welcome, \(LoginViewController.loginText)!"
         // Do any additional setup after loading the view.
     }
     

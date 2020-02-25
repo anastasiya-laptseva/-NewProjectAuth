@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NewProjectAuth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="NewProjectAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -210,10 +210,10 @@
             </objects>
             <point key="canvasLocation" x="1668" y="116"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Class Table View Controller-->
         <scene sceneID="E8N-YA-wy5">
             <objects>
-                <tableViewController id="GkT-Bt-oFE" customClass="TableViewController" customModule="NewProjectAuth" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="GkT-Bt-oFE" customClass="ClassTableViewController" customModule="NewProjectAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XWK-3H-zK4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -251,10 +251,10 @@
             </objects>
             <point key="canvasLocation" x="2432" y="116"/>
         </scene>
-        <!--Profife Info Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="LQE-2N-8jm">
             <objects>
-                <viewController id="XBA-5B-mLg" customClass="ProfifeInfoController" customModule="NewProjectAuth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XBA-5B-mLg" customClass="ProfileViewController" customModule="NewProjectAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GvX-u0-e56">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -437,7 +437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTX-BG-J7A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2001" y="875"/>
+            <point key="canvasLocation" x="2061" y="846"/>
         </scene>
     </scenes>
     <resources>
@@ -447,6 +447,6 @@
         <image name="takePicture" width="313.66665649414062" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vcV-QX-3S2"/>
+        <segue reference="G0z-GC-E3L"/>
     </inferredMetricsTieBreakers>
 </document>

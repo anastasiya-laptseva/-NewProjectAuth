@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfifeInfoController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var profileView: UIView!
     
@@ -31,24 +31,37 @@ class ProfifeInfoController: UIViewController, UIImagePickerControllerDelegate, 
     var student: Student?
     var color: UIColor?
     var isEditProfile: Bool?
+    var isStudent: Bool?
     var imagePicker = UIImagePickerController()
+    var profileManager = ProfileManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if isStudent ?? false{
+            profileStudent()
+            isEditing = false
+        }
+        else{
+            profileMain()
+        }
+        ShowComponents()
+    }
+    
+    func profileStudent() -> Void {
         if let colorView = color{
             profileView.backgroundColor = colorView
         }
         
-        ShowComponents()
-        if(isEditProfile == false){
-            LoadProfile()
+        setProfile()
+    }
+    
+    func profileMain() -> Void{
+        if(isEditing){
+            
         }
         else{
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(addTapped))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveClick))
         }
-        
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func changeGender(_ sender: Any) {
@@ -84,11 +97,12 @@ class ProfifeInfoController: UIViewController, UIImagePickerControllerDelegate, 
         print("\(info)")
         if let image = info[.originalImage] as? UIImage {
             photoImage.image = image
+            student?.imageName = info[.imageURL] as! String
             dismiss(animated: true, completion: nil)
         }
     }
     
-    func ShowComponents() -> Void {
+    func StudentComponents() -> Void {
         let showProfile = isEditProfile ?? false
         
         labelNameSurname.isHidden = showProfile
@@ -103,7 +117,11 @@ class ProfifeInfoController: UIViewController, UIImagePickerControllerDelegate, 
         infoEdit.isHidden = showEdit
     }
     
-    func LoadProfile() -> Void {
+    func ProfileComponents(<#parameters#>) -> <#return type#> {
+        <#function body#>
+    }
+    
+    func setProfile() -> Void {
         if  let studentCurrent = student{
             photoImage.image = UIImage(named: studentCurrent.imageName)
             labelNameSurname.text = "\(studentCurrent.name) \(studentCurrent.surname)"
@@ -113,15 +131,14 @@ class ProfifeInfoController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-     @objc func addTapped() -> Void {
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(nameSurnameEdit.text, forKey: "nameSurname")
-//        userDefaults.set(photoImage.image.path, forKey: "imagePath")
-        userDefaults.set(ageEdit.text, forKey: "age")
-//        userDefaults.set(genderEdit, forKey: "gender")
-        userDefaults.set(infoEdit.text, forKey: "info")
-        userDefaults.synchronize()
+    @objc func saveClick() -> Void {
+        if let currentStudent = student{
+            self.profileManager.saveProfile(student: currentStudent)
+        }
     }
+    
+    
+    
     
 
     /*
@@ -135,68 +152,3 @@ class ProfifeInfoController: UIViewController, UIImagePickerControllerDelegate, 
     */
 
 }
-
-
-
-//class StudentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-//
-//    var array = [String]()
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        array.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        var cell: UITableViewCell
-//            if indexPath.row % 2 == 0 {
-//                cell = tableView.dequeueReusableCell(withIdentifier: "red", for: indexPath)
-//            } else {
-//                cell = tableView.dequeueReusableCell(withIdentifier: "blue", for: indexPath)
-//
-//            }
-//            cell.textLabel?.text = data[indexPath.row]
-//            return cell
-//    }
-//
-//
-//
-//
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        // Do any additional setup after loading the view.
-//    }
-//
-//
-//
-//    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//    }
-//
-//
-//    func prepareArray() ->  {
-//        let path = Bundle.main.path(forResource: "Names", ofType: "txt")
-//}
-//
-//    struct Student {
-//        var name: String
-//        var surname: String = "value"
-//        var age: String = "value"
-//        var info: String = "value"
-//        var gender: Gender = .preferNotToSay
-//
-//        enum Gender {
-//            case mele, female, preferNotToSay
-//        }
-//}
-//
-//
-//
-//}
-// /**/*/
