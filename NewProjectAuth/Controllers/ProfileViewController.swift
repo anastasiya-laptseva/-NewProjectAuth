@@ -21,8 +21,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     //MARK: EditComponents
     @IBOutlet weak var nameSurnameEdit: UITextField!
-    @IBOutlet weak var cameraButton: UIButton!
-    @IBOutlet weak var photoButton: UIButton!
+    @IBOutlet weak var cameraButtonEdit: UIButton!
+    @IBOutlet weak var photoButtonEdit: UIButton!
     @IBOutlet weak var ageEdit: UITextField!
     @IBOutlet weak var genderEdit: UISegmentedControl!
     @IBOutlet weak var infoEdit: UITextField!
@@ -34,34 +34,48 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     var isStudent: Bool?
     var imagePicker = UIImagePickerController()
     var profileManager = ProfileManager()
+    var storage = StudentStorage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        isEditing = student == nil
+        startProfile()
+    }
+    
+    func startProfile() -> Void {
         if isStudent ?? false{
             profileStudent()
-            isEditing = false
         }
         else{
             profileMain()
         }
-        ShowComponents()
     }
     
     func profileStudent() -> Void {
+        isEditing = false
+        
         if let colorView = color{
             profileView.backgroundColor = colorView
         }
         
         setProfile()
+        showComponents()
     }
     
     func profileMain() -> Void{
+        isStudent = false
+        
+        student = profileManager.loadProfile()
+        setProfile()
+        
         if(isEditing){
-            
-        }
-        else{
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveClick))
         }
+        else{
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editClick))
+        }
+        
+        showComponents()
     }
     
     @IBAction func changeGender(_ sender: Any) {
@@ -102,23 +116,20 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    func StudentComponents() -> Void {
-        let showProfile = isEditProfile ?? false
+    func showComponents() -> Void {
         
-        labelNameSurname.isHidden = showProfile
+        let hide = isStudent! || isEditing == false
         
-        let showEdit = isEditProfile == false
+        //Edit components
+        nameSurnameEdit.isHidden = hide
+        cameraButtonEdit.isHidden = hide
+        photoButtonEdit.isHidden = hide
+        ageEdit.isHidden = hide
+        genderEdit.isHidden = hide
+        infoEdit.isHidden = hide
         
-        nameSurnameEdit.isHidden = showEdit
-        photoButton.isHidden = showEdit
-        cameraButton.isHidden = showEdit
-        ageEdit.isHidden = showEdit
-        genderEdit.isHidden = showEdit
-        infoEdit.isHidden = showEdit
-    }
-    
-    func ProfileComponents(<#parameters#>) -> <#return type#> {
-        <#function body#>
+        //Main components
+        labelNameSurname.isHidden = hide == false
     }
     
     func setProfile() -> Void {
@@ -132,9 +143,22 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @objc func saveClick() -> Void {
-        if let currentStudent = student{
-            self.profileManager.saveProfile(student: currentStudent)
-        }
+        let fullName = nameSurnameEdit.text
+        let fullNameArr = fullName?.split{$0 == " "}.map(String.init)
+        let firstName: String = fullNameArr?[0] ?? ""
+        let lastName: String? = fullNameArr?.count ?? 0 > 1 ? fullNameArr?[1] ?? "" : nil
+        
+        let genderString = storage.getGenderInt(value: genderEdit.selectedSegmentIndex).rawValue
+        
+        let currentStudent = Student(imageName: "", name: firstName, surname: lastName ?? "", age: ageEdit.text ?? "", info: infoEdit.text ?? "", gender: genderString)
+        self.profileManager.saveProfile(student: currentStudent)
+        isEditing = false
+        startProfile()
+    }
+    
+    @objc func editClick() -> Void {
+        isEditing = true
+        startProfile()
     }
     
     

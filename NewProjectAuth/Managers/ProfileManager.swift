@@ -18,16 +18,19 @@ class ProfileManager {
         case info
     }
     
-    func loadProfile() -> Student {
+    func loadProfile() -> Student? {
         let userDefaults = UserDefaults.standard
         var dictionary = [String:String]()
         for key in KeysForSave.allCases {
-            if let value: AnyObject = userDefaults.object(forKey: "key") as AnyObject?
+            if let value: AnyObject = userDefaults.object(forKey: key.rawValue) as AnyObject?
             {
                 dictionary.updateValue(value as! String, forKey: key.rawValue)
             }
         }
-        return Student(object: dictionary)
+        if(dictionary.count>0){
+            return Student(object: dictionary)
+        }
+        return nil
     }
     
     func saveProfile(student: Student) -> Void {

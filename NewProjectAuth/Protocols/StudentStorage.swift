@@ -57,6 +57,19 @@ class StudentStorage : NSObject, UITableViewDataSource{
             }
         }
     }
+    
+    func getGenderInt(value: Int) -> Gender {
+        switch value {
+            case 0:
+                return Gender.male
+            case 1:
+                return Gender.female
+            case 2:
+                return Gender.preferNotToSay
+            default:
+                return Gender.male
+        }
+    }
 }
 
 enum Gender: String {
@@ -72,6 +85,15 @@ struct Student {
     var age: String = ""
     var info: String = ""
     var gender: String = ""
+    
+    init(imageName: String, name: String, surname: String, age: String, info: String, gender: String){
+        self.imageName = imageName
+        self.name = name
+        self.surname = surname
+        self.age = age
+        self.info = info
+        self.gender = gender
+    }
     
     init(object: [String: String]) {
         imageName = object["imageName"] ?? ""
