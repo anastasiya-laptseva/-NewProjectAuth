@@ -65,10 +65,6 @@ class LoginViewController: UIViewController {
         PasswordTextField.isSecureTextEntry = isSecure;
         if let image = UIImage(named: isSecure ? "lock (1)" : "lock") as UIImage?{
             sequreIcon.setImage(image, for: .normal)
+        }
     }
-    
-    
-    
-}
-
 }

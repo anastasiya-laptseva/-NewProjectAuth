@@ -43,12 +43,9 @@ class ClassTableViewController: UITableViewController{
         if segue.identifier == segueStudentId{
             let studentProfile = segue.destination as! ProfileViewController
             studentProfile.student = selectedStudent
+            //обозначем для общего окна профайл что работаем со студентами а не с профайлом
             studentProfile.isStudent = true
             studentProfile.color = selectedColor
-        }
-        else if segue.identifier == segueProfileID{
-            let studentProfile = segue.destination as! ProfileViewController
-            studentProfile.isStudent = false
         }
     }
     
