@@ -9,28 +9,43 @@
 import UIKit
 
 class ClassTableViewController: UITableViewController{
+    //Все студенты
+    var students = [Student]()
+    
+    //Массив цветов
+    let genderPrototypes = [GenderPrototype(bacgkroundColor: UIColor(rgb: 0xFEFC9B)), GenderPrototype(bacgkroundColor: UIColor(rgb: 0xEABFEB)), GenderPrototype(bacgkroundColor: UIColor(rgb: 0x76D6FF))]
+
     let segueProfileID = "profileSeque"
     let segueStudentId = "studentProfile"
-    let storageDataSource = StudentStorage()
     
     var selectedStudent: Student?
     var selectedColor: UIColor?
     
-    
-    
     override func viewDidLoad() {
        super.viewDidLoad()
-        storageDataSource.loadStudents()
-        tableView.dataSource = storageDataSource
+        loadStudents()
+        tableView.dataSource = self
         tableView.reloadData()
    }
+    
+    func setStudents(students: [Student]) {
+        self.students = students
+    }
+    
+    func getStudents() -> [Student] {
+        return students
+    }
+    
+    func getGenderPrototypes() -> [GenderPrototype] {
+        return genderPrototypes
+    }
     
     func updateData() {
         tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedStudent = storageDataSource.students[indexPath.row]
+        selectedStudent = getStudents()[indexPath.row]
         selectedColor = tableView.cellForRow(at: indexPath)?.backgroundColor ?? .white
         self.performSegue(withIdentifier: segueStudentId, sender: self)
     }

@@ -41,7 +41,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     //менеджер загрузки и сохранения профиля
     var profileManager = ProfileManager()
     //менеджер для работы с профилем или студентом
-    var storage = StudentStorage()
+    var genderParcer = GenderParcer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -217,7 +217,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             
             nameSurnameEdit.text = "\(studentCurrent.name) \(studentCurrent.surname)"
             ageEdit.text = "\(studentCurrent.age)"
-            genderEdit.selectedSegmentIndex = storage.getIntGender(value: studentCurrent.getGender())
+            genderEdit.selectedSegmentIndex = genderParcer.getIntGender(value: studentCurrent.getGender())
             infoEdit.text = "\(studentCurrent.info)"
         }
     }
@@ -234,7 +234,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             firstName = array.count>0 ? array[0] : ""
             lastName = array.count>1 ? array[1] : ""
         }
-        let genderString = storage.getGenderInt(value: genderEdit.selectedSegmentIndex).rawValue
+        let genderString = genderParcer.getGenderInt(value: genderEdit.selectedSegmentIndex).rawValue
         
         //создается объект студента из edit компонентов
         let currentStudent = Student(imageName: student?.imageName ?? "", name: firstName, surname: lastName , age: ageEdit.text ?? "", info: infoEdit.text ?? "", gender: genderString)

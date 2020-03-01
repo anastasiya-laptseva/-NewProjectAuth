@@ -9,24 +9,18 @@
 import UIKit
 
 //для окна работы со списком студентов и для профайта
-class StudentStorage : NSObject, UITableViewDataSource{
-    //Все студенты
-    var students = [Student]()
-    
-    //Массив цветов
-    let genderPrototypes = [GenderPrototype(bacgkroundColor: UIColor(rgb: 0xFEFC9B)), GenderPrototype(bacgkroundColor: UIColor(rgb: 0xEABFEB)), GenderPrototype(bacgkroundColor: UIColor(rgb: 0x76D6FF))]
-    
+extension ClassTableViewController {
     //указывает количество ячееек которые должны быть созданы
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return students.count
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return getStudents().count
     }
     
-    
     //построение ячеек из массива "students"
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //создается новая ячейка
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let student = students[indexPath.row]
+        let student = getStudents()[indexPath.row]
+        let genderPrototypes = getGenderPrototypes()
         switch student.getGender() {
             case .male:
                 cell.backgroundColor = genderPrototypes[2].bacgkroundColor
@@ -44,10 +38,12 @@ class StudentStorage : NSObject, UITableViewDataSource{
     }
     
     //удаление ячейки без сохранения
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             //удаление из локального массива
+            var students = getStudents()
             students.remove(at: indexPath.row)
+            setStudents(students: students)
             //удаление из tableview
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -62,17 +58,19 @@ class StudentStorage : NSObject, UITableViewDataSource{
         if let recipe = json as? [String: Any] {
             //берем массив студентов по данному ключу
             if let array = recipe["students"] as? Array<[String:String]>{
-                students = [Student]()
+                var students = [Student]()
                 //заносим всех студентов в students
                 for element in array {
                     let student = Student(object: element)
                     students.append(student)
                 }
+                setStudents(students: students)
             }
         }
     }
-    
-    
+}
+
+class GenderParcer {
     func getGenderInt(value: Int) -> Gender {
         switch value {
             case 0:
@@ -157,7 +155,6 @@ struct Student {
         return Gender(rawValue: gender) ?? Gender.preferNotToSay
     }
 }
-
 
 //прототип для задания цвета ячейки студентов
 struct GenderPrototype{

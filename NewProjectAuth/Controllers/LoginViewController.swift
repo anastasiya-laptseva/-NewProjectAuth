@@ -49,11 +49,13 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func EditingChangedLogin(_ sender: Any) {
-        print(loginTextField.text ?? "")
+//        показывает что вводится в поле Login
+//        print(loginTextField.text ?? "")
         validator.validateTextFieldLetter(textField: loginTextField)
     }
     @IBAction func EditingChangedPassword(_ sender: Any) {
-        print(PasswordTextField.text ?? "")
+//        показывает что вводится в поле Password
+//        print(PasswordTextField.text ?? "")
     }
     
     
