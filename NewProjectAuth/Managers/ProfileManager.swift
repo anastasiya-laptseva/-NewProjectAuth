@@ -10,6 +10,13 @@ import UIKit
 
 //для сохранения и загрузки данных и создания объекта профайла
 class ProfileManager {
+    static let shared: ProfileManager = {
+        let instance = ProfileManager()
+        return instance
+    }()
+    
+    private init() {}
+    
     //ключи для сохранения из профайла на редактировании
     enum KeysForSave: String, CaseIterable{
         case empty

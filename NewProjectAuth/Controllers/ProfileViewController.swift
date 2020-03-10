@@ -38,8 +38,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     var isStudent: Bool = false
     //с помощью этого объекта можно получать картинки из галереи или камеры
     var imagePicker = UIImagePickerController()
-    //менеджер загрузки и сохранения профиля
-    var profileManager = ProfileManager()
     //менеджер для работы с профилем или студентом
     var genderParcer = GenderParcer()
     
@@ -48,9 +46,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         //если открывается профиль а не студент
         if isStudent == false{
             //если профиль уже создавался
-            if profileManager.isProfile(){
+            if ProfileManager.shared.isProfile(){
                 //загружаем профиль
-                student = profileManager.loadProfile()
+                student = ProfileManager.shared.loadProfile()
             }
             //если профиль не создавался
             else{
@@ -239,7 +237,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         //создается объект студента из edit компонентов
         let currentStudent = Student(imageName: student?.imageName ?? "", name: firstName, surname: lastName , age: ageEdit.text ?? "", info: infoEdit.text ?? "", gender: genderString)
         //отправляется в сохранение объект созданного/редактируемого студента
-        self.profileManager.saveProfile(student: currentStudent)
+        ProfileManager.shared.saveProfile(student: currentStudent)
         //текущему профилю кешируется то что мы создали редактированием
         student = currentStudent
         //отключаем редактирование
