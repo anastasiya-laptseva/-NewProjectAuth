@@ -14,11 +14,9 @@ class ProfileManager {
         let instance = ProfileManager()
         return instance
     }()
-    
     private init() {}
-    
     //ключи для сохранения из профайла на редактировании
-    enum KeysForSave: String, CaseIterable{
+    enum KeysForSave: String, CaseIterable {
         case empty
         case nameSurname
         case imagePath
@@ -28,47 +26,42 @@ class ProfileManager {
     }
     //ключ для того чтобы знать что профайл создан
     let isProfileKey = "isProfile"
-    
     //загрузает профайл из userdefault, возвращает объект структуры студента
     func loadProfile() -> Student? {
         let userDefaults = UserDefaults.standard
-        var dictionary = [String:String]()
+        var dictionary = [String: String]()
         for key in KeysForSave.allCases {
-            if let value: AnyObject = userDefaults.object(forKey: key.rawValue) as AnyObject?
-            {
-                dictionary.updateValue(value as! String, forKey: key.rawValue)
+            if let value: AnyObject = userDefaults.object(forKey: key.rawValue) as AnyObject? {
+                let str = value as? String ?? ""
+                dictionary.updateValue(str, forKey: key.rawValue)
             }
         }
-        if(dictionary.count>0){
+        if dictionary.count>0 {
             return Student(object: dictionary)
         }
         return nil
     }
-    
     //сохранение в userdefault, принимает объект типа студент
-    func saveProfile(student: Student) -> Void {
+    func saveProfile(student: Student) {
         let userDefaults = UserDefaults.standard
         userDefaults.set("1", forKey: isProfileKey)
         userDefaults.set("\(student.name) \(student.surname)", forKey: KeysForSave.nameSurname.rawValue)
-        userDefaults.set(student.imageName  , forKey: KeysForSave.imagePath.rawValue)
+        userDefaults.set(student.imageName, forKey: KeysForSave.imagePath.rawValue)
         userDefaults.set(student.age, forKey: KeysForSave.age.rawValue)
         userDefaults.set(student.gender, forKey: KeysForSave.gender.rawValue)
         userDefaults.set(student.info, forKey: KeysForSave.info.rawValue)
         userDefaults.synchronize()
     }
-    
     //проверяет создавался ли профайл
     func isProfile() -> Bool {
         let userDefaults = UserDefaults.standard
-        if let value: String = userDefaults.object(forKey: isProfileKey) as? String{
+        if let value: String = userDefaults.object(forKey: isProfileKey) as? String {
             return value == "1"
         }
-        
         return false
     }
-    
     //очистить сохранения
-    func DeleteAll() -> Void {
+    func deleteAll() {
         let userDefaults = UserDefaults.standard
         userDefaults.removeObject(forKey: isProfileKey)
         userDefaults.removeObject(forKey: KeysForSave.nameSurname.rawValue)

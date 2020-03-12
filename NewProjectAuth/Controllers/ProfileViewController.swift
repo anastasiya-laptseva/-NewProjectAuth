@@ -9,25 +9,18 @@
 import UIKit
 
 //общее окно для студентов и самого профиля
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController, ImageProtocol {
     @IBOutlet weak var profileView: UIView!
-    //MARK: PreviewComponents
-    @IBOutlet weak var labelNameSurname: UILabel!
-    @IBOutlet weak var photoImage: UIImageView!
+    @IBOutlet weak var containerProfile: UIView!
+    // MARK: PreviewComponents
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
-    
-    //MARK: EditComponents
-    @IBOutlet weak var nameSurnameEdit: UITextField!
-    @IBOutlet weak var cameraButtonEdit: UIButton!
-    @IBOutlet weak var photoButtonEdit: UIButton!
+    // MARK: EditComponents
     @IBOutlet weak var ageEdit: UITextField!
     @IBOutlet weak var genderEdit: UISegmentedControl!
     @IBOutlet weak var infoEdit: UITextField!
-    
-    //MARK: Variables
-    
+    // MARK: Variables
     //хранится текущий студент или профиль
     var student: Student?
     //для студентов передается цвет
@@ -36,206 +29,162 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     var isEditProfile: Bool = false
     //студент или профиль
     var isStudent: Bool = false
-    //с помощью этого объекта можно получать картинки из галереи или камеры
-    var imagePicker = UIImagePickerController()
     //менеджер для работы с профилем или студентом
     var genderParcer = GenderParcer()
-    
+    var profilePerson = ProfilePersonViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        addProfilePerson(version: WelcomeViewController.style)
+        profilePerson.delegate = self
         //если открывается профиль а не студент
-        if isStudent == false{
+        if isStudent == false {
             //если профиль уже создавался
-            if ProfileManager.shared.isProfile(){
+            if ProfileManager.shared.isProfile() {
                 //загружаем профиль
                 student = ProfileManager.shared.loadProfile()
             }
             //если профиль не создавался
-            else{
+            else {
                 //включаем редактирование
-                isEditing = true;
+                isEditing = true
             }
         }
         startProfile()
     }
-    
+    func addProfilePerson(version: Int) {
+        let name = "profilePerson\(version)"
+        // swiftlint:disable all
+        profilePerson = storyboard?.instantiateViewController(withIdentifier: name) as? ProfilePersonViewController ?? ProfilePersonViewController()
+        // swiftlint:enable all
+        addChild(profilePerson)
+        //Or, you could add auto layout constraint instead of relying on AutoResizing contraints
+        profilePerson.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        profilePerson.view.frame = containerProfile.bounds
+        containerProfile.addSubview(profilePerson.view)
+        profilePerson.didMove(toParent: self)
+    }
     //этот метод выбирает как настроить и загрузить данные в profileviewcontroller
-    func startProfile() -> Void {
+    func startProfile() {
         if isStudent {
             profileStudent()
-        }
-        else{
+        } else {
             profileMain()
         }
     }
-    
-    func profileStudent() -> Void {
+    func profileStudent() {
         //устанавливает цвет бэкграунда
-        if let colorView = color{
-            profileView.backgroundColor = colorView
+        if let colorView = color {
+            setBackColorView(color: colorView)
         }
-        
         setProfile()
         showComponents()
     }
-    
-    
-    func profileMain() -> Void{
+    func setBackColorView(color: UIColor) {
+        profileView.backgroundColor = color
+        profilePerson.view.backgroundColor = color
+    }
+    func profileMain() {
         //если он включен на редактирование/создание
-        if(isEditing){
+        if isEditing {
             //необходимо сбросить значения лейблов которые не скрываются
             ageLabel.text = "Age:"
             genderLabel.text = "Gender:"
             infoLabel.text = "Info:"
             // добавляев навигационный бар кнопку сохранения
+            // swiftlint:disable all
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveClick))
-        }
-        else{
+            // swiftlint:enable all
+        } else {
             //если профайл не редактируется и создан, то нужно его сначала загрузить
             setProfile()
+            // swiftlint:disable all
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editClick))
+            // swiftlint:enable all
         }
-        
         //в зависимости от того редактирование/создание или нет включаются и выключаются нужные компоненты
         showComponents()
     }
-    
     //не используется
     @IBAction func changeGender(_ sender: Any) {
         print(genderEdit.selectedSegmentIndex)
     }
-    
-    //клик по кнопке галерея для загрузки фото
-    @IBAction func galleryClick(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            //указываем что у нас реализованы протоколы получения фото
-            imagePicker.delegate = self
-            //указываем тип что мы хотим иметь: альбом или камеру
-            imagePicker.sourceType = .savedPhotosAlbum
-            imagePicker.allowsEditing = false
-            //открываем альбом
-            present(imagePicker, animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func photoClick(_ sender: Any) {
-        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
-            imagePicker.sourceType = .camera
-            //открываем камеру
-            self.present(imagePicker, animated: true, completion: nil)
-        }
-        else{
-            print("Camera is not Available")
-        }
-    }
-    
     //чтобы закрыть окно галереи
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         //выйти из окна
         dismiss(animated: true, completion: nil)
     }
-
-    //делегат дает нам фото из галереи которое мы кликнули
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        //здесь из объекта info который нам возвращает imagePicker мы можем получить всю информацию о фото
-        //в данном случае мы забираем по ключу оригинал картинки
-        if let image = info[.originalImage] as? UIImage {
-            //в наше image photo заносим полученную картиинку
-            photoImage.image = image
-            //получаем путь картинки
-            let url = "\(info[.imageURL] ?? "")"
-            //получаем массив объектов по разделителю /
-            let fullNameArr = url.split{$0 == "/"}.map(String.init)
-            student?.imageName = fullNameArr[fullNameArr.count-1]
-            dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    //включаются выключаются компоненты в зависимости о того загружен профиль или студент а также редактируется он или нет
-    func showComponents() -> Void {
-        
+//    включаются выключаются компоненты
+//    в зависимости о того загружен профиль или студент а также редактируется он или нет
+    func showComponents() {
         let hideEdit = isStudent || isEditing == false
-        
         //Edit components
-        nameSurnameEdit.isHidden = hideEdit
-        cameraButtonEdit.isHidden = hideEdit
-        photoButtonEdit.isHidden = hideEdit
+        profilePerson.nameSurnameEdit.isHidden = hideEdit
+        profilePerson.cameraButtonEdit.isHidden = hideEdit
+        profilePerson.photoButtonEdit.isHidden = hideEdit
         ageEdit.isHidden = hideEdit
         genderEdit.isHidden = hideEdit
         infoEdit.isHidden = hideEdit
-        
-        
-        let hideMain = isEditing;
+        let hideMain = isEditing
         //Main components
-        labelNameSurname.isHidden = hideMain
+        profilePerson.labelNameSurname.isHidden = hideMain
     }
-    
     //расставляет значения из student объекта по компонентам обычным
-    func setProfile() -> Void {
-        if  let studentCurrent = student{
-
-            if isStudent{
-                if let image = UIImage(named: studentCurrent.imageName){
-                    photoImage.image = image
+    func setProfile() {
+        if  let studentCurrent = student {
+            if isStudent {
+                if let image = UIImage(named: studentCurrent.imageName) {
+                    profilePerson.photoImage.image = image
                 }
-            }
-            else{
+            } else {
                 let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
-                let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
-                let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
-                if let dirPath          = paths.first
-                {
+                let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+                let paths = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+                if let dirPath = paths.first {
                     let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(studentCurrent.imageName)
                    let image    = UIImage(contentsOfFile: imageURL.path)
-                    photoImage.image = image
+                    profilePerson.photoImage.image = image
                 }
             }
 
-            labelNameSurname.text = "\(studentCurrent.name) \(studentCurrent.surname)"
+            profilePerson.labelNameSurname.text = "\(studentCurrent.name) \(studentCurrent.surname)"
             ageLabel.text = "Age: \(studentCurrent.age)"
             genderLabel.text = "Gender: \(studentCurrent.gender)"
             infoLabel.text = "Info: \(studentCurrent.info)"
         }
     }
-    
     //расставляет значения из student объекта по компонентам для редактирования
-    func setEditProfile() -> Void {
-        if  let studentCurrent = student{
-                
+    func setEditProfile() {
+        if  let studentCurrent = student {
             let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
-            let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
-            let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
-            if let dirPath          = paths.first
-            {
+            let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+            let paths = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+            if let dirPath = paths.first {
                 let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(studentCurrent.imageName)
                let image    = UIImage(contentsOfFile: imageURL.path)
-                photoImage.image = image
+                profilePerson.photoImage.image = image
             }
-            
-            nameSurnameEdit.text = "\(studentCurrent.name) \(studentCurrent.surname)"
+            profilePerson.nameSurnameEdit.text = "\(studentCurrent.name) \(studentCurrent.surname)"
             ageEdit.text = "\(studentCurrent.age)"
             genderEdit.selectedSegmentIndex = genderParcer.getIntGender(value: studentCurrent.getGender())
             infoEdit.text = "\(studentCurrent.info)"
         }
     }
-    
-    
     //собирает все данные из edit компонентов и формирует student объект, отправляет в сохранения
-    @objc func saveClick() -> Void {
+    @objc func saveClick() {
         //из namesurnameedit выделяются имя и фамилия сплитом по пробелу
-        let fullName = nameSurnameEdit.text
-        let fullNameArr = fullName?.split{$0 == " "}.map(String.init)
+        let fullName = profilePerson.nameSurnameEdit.text
+        let fullNameArr = fullName?.split {$0 == " "}.map(String.init)
         var firstName = ""
         var lastName = ""
-        if let array = fullNameArr{
+        if let array = fullNameArr {
             firstName = array.count>0 ? array[0] : ""
             lastName = array.count>1 ? array[1] : ""
         }
         let genderString = genderParcer.getGenderInt(value: genderEdit.selectedSegmentIndex).rawValue
-        
         //создается объект студента из edit компонентов
-        let currentStudent = Student(imageName: student?.imageName ?? "", name: firstName, surname: lastName , age: ageEdit.text ?? "", info: infoEdit.text ?? "", gender: genderString)
+        // swiftlint:disable all
+        let currentStudent = Student(imageName: student?.imageName ?? "", name: firstName, surname: lastName, age: ageEdit.text ?? "", info: infoEdit.text ?? "", gender: genderString)
+        // swiftlint:enable all
         //отправляется в сохранение объект созданного/редактируемого студента
         ProfileManager.shared.saveProfile(student: currentStudent)
         //текущему профилю кешируется то что мы создали редактированием
@@ -245,27 +194,24 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         //перезагружаем
         startProfile()
     }
-    
     //включаем редактирование
-    @objc func editClick() -> Void {
+    @objc func editClick() {
         isEditing = true
         //подгружаем в edit компоненты профиль из student
         setEditProfile()
         startProfile()
     }
-    
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func infoSend(info: [UIImagePickerController.InfoKey: Any]) {
+        //в данном случае мы забираем по ключу оригинал картинки
+        if let image = info[.originalImage] as? UIImage {
+            //в наше image photo заносим полученную картиинку
+            profilePerson.photoImage.image = image
+            //получаем путь картинки
+            let url = "\(info[.imageURL] ?? "")"
+            //получаем массив объектов по разделителю /
+            let fullNameArr = url.split {$0 == "/"}.map(String.init)
+            student?.imageName = fullNameArr[fullNameArr.count-1]
+            dismiss(animated: true, completion: nil)
+        }
     }
-    */
-
 }
