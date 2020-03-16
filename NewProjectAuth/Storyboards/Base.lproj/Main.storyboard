@@ -201,6 +201,21 @@
                                     <segue destination="XBA-5B-mLg" kind="show" identifier="profileSeque" id="G0z-GC-E3L"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqh-dt-aFI">
+                                <rect key="frame" x="82" y="536.5" width="250" height="40"/>
+                                <color key="backgroundColor" red="0.92860041195352971" green="0.77963618303858662" blue="0.93939012289047241" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="NSp-RM-y3L"/>
+                                    <constraint firstAttribute="height" constant="40" id="WwH-uu-rnU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Push me">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="animationButton:" destination="m9H-4C-vab" eventType="touchUpInside" id="Gbj-4U-gBq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.95807705792936493" blue="0.73098264681747382" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -213,6 +228,8 @@
                             <constraint firstItem="wCW-ip-iWr" firstAttribute="trailing" secondItem="yFR-dm-kPB" secondAttribute="trailing" constant="40" id="MAt-XS-o0P"/>
                             <constraint firstItem="gLY-zl-LrJ" firstAttribute="top" secondItem="yFR-dm-kPB" secondAttribute="bottom" constant="149" id="TRe-M2-48T"/>
                             <constraint firstItem="AHq-v7-lKo" firstAttribute="top" secondItem="yFR-dm-kPB" secondAttribute="bottom" constant="20" id="bGh-Iv-CGH"/>
+                            <constraint firstItem="xqh-dt-aFI" firstAttribute="top" secondItem="nNj-hW-0IV" secondAttribute="bottom" constant="100" id="fYR-z1-J2P"/>
+                            <constraint firstItem="xqh-dt-aFI" firstAttribute="centerX" secondItem="wCW-ip-iWr" secondAttribute="centerX" id="lb4-Jw-VCd"/>
                             <constraint firstItem="nNj-hW-0IV" firstAttribute="leading" secondItem="gLY-zl-LrJ" secondAttribute="leading" id="oTa-kH-c7z"/>
                             <constraint firstItem="gLY-zl-LrJ" firstAttribute="leading" secondItem="wCW-ip-iWr" secondAttribute="leading" constant="60" id="xTn-iK-KAk"/>
                         </constraints>
@@ -220,12 +237,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="Iks-e0-4TC"/>
                     <connections>
+                        <outlet property="pushMeButton" destination="xqh-dt-aFI" id="XpE-0w-5pz"/>
                         <outlet property="welcomeLabel" destination="yFR-dm-kPB" id="m9f-yt-3aW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1E-5I-68N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668" y="116"/>
+            <point key="canvasLocation" x="1666.6666666666667" y="115.84821428571428"/>
         </scene>
         <!--Class Table View Controller-->
         <scene sceneID="E8N-YA-wy5">
@@ -423,9 +441,6 @@
                                     <constraint firstAttribute="width" constant="200" id="WAh-TD-FRs"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="100"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
@@ -477,6 +492,7 @@
                             <constraint firstItem="AXx-uJ-fja" firstAttribute="leading" secondItem="ejU-pm-iAs" secondAttribute="leading" constant="25" id="pv2-Lc-6uA"/>
                             <constraint firstItem="UOR-Aa-729" firstAttribute="leading" secondItem="AXx-uJ-fja" secondAttribute="leading" id="wPD-O4-3VA"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="NPG-Wr-zsQ"/>
                     </view>
                     <connections>
                         <outlet property="cameraButtonEdit" destination="eaA-Dd-N4s" id="Cpc-A8-JQ5"/>

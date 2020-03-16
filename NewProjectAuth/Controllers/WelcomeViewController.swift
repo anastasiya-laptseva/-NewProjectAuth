@@ -10,7 +10,9 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var pushMeButton: UIButton!
     static var style: Int = 1
+    let animationPushButton = AnimationPushButton()
 //    static var myProfile : Student?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,12 @@ class WelcomeViewController: UIViewController {
             return
         }
         WelcomeViewController.style = segment.selectedSegmentIndex+1
+    }
+    @IBAction func animationButton(_ sender: Any) {
+        guard let viewPress = sender as? UIView ?? nil else {
+            return
+        }
+        animationPushButton.pushPress(view: viewPress)
     }
     /*
     // MARK: - Navigation

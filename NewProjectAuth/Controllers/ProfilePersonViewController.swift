@@ -26,6 +26,7 @@ class ProfilePersonViewController: UIViewController, UIImagePickerControllerDele
     var imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        animatePhoto()
     }
     //клик по кнопке галерея для загрузки фото
     @IBAction func galleryClick(_ sender: Any) {
@@ -54,5 +55,13 @@ class ProfilePersonViewController: UIViewController, UIImagePickerControllerDele
     // swiftlint:enable all
         //здесь из объекта info который нам возвращает imagePicker мы можем получить всю информацию о фото
         delegate?.infoSend(info: info)
+    }
+    func animatePhoto() {
+        if(WelcomeViewController.style == 1) {
+            //photoImage
+            UIView.animate(withDuration: 1) {
+                self.photoImage.layer.cornerRadius = 100
+            }
+        }
     }
 }
