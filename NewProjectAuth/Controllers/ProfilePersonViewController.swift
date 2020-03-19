@@ -57,7 +57,7 @@ class ProfilePersonViewController: UIViewController, UIImagePickerControllerDele
         delegate?.infoSend(info: info)
     }
     func animatePhoto() {
-        if(WelcomeViewController.style == 1) {
+        if WelcomeViewController.style == 1 {
             //photoImage
             UIView.animate(withDuration: 1) {
                 self.photoImage.layer.cornerRadius = 100

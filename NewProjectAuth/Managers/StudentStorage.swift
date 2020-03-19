@@ -44,8 +44,14 @@ extension ClassTableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    //загружает студентов из json файла Student.json
     func loadStudents() {
+        setStudents(students: LoadSave().loadStudents())
+    }
+}
+
+class LoadSave {
+    //загружает студентов из json файла Student.json
+    func loadStudents() -> [Student] {
         let jsonManager = JsonManager()
         let dataJson = jsonManager.loadFileAsString(name: "Student", type: "json")
         //делаем json объект
@@ -59,9 +65,10 @@ extension ClassTableViewController {
                     let student = Student(object: element)
                     students.append(student)
                 }
-                setStudents(students: students)
+                return students
             }
         }
+        return [Student]()
     }
 }
 

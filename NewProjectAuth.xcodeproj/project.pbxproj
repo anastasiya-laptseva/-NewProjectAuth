@@ -12,6 +12,8 @@
 		0E7D5DA8241CE4A40002B228 /* Push2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E7D5DA7241CE4A40002B228 /* Push2.xib */; };
 		0E7D5DAA241CE4BA0002B228 /* Push3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E7D5DA9241CE4BA0002B228 /* Push3.xib */; };
 		0E7D5DAD2420156E0002B228 /* AnimationPushButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D5DAC2420156E0002B228 /* AnimationPushButton.swift */; };
+		0E7D5DCF2422ABE70002B228 /* ClassCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D5DCE2422ABE70002B228 /* ClassCollectionViewController.swift */; };
+		0E7D5DD22422B26A0002B228 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7D5DD12422B26A0002B228 /* CollectionViewCell.swift */; };
 		0E8F03E623FDE5790085EC9C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F03E523FDE5790085EC9C /* ProfileViewController.swift */; };
 		0E8F03E823FE00320085EC9C /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F03E723FE00310085EC9C /* Validator.swift */; };
 		0E8F03EF24030DA30085EC9C /* Prototypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F03EE24030DA30085EC9C /* Prototypes.swift */; };
@@ -37,6 +39,8 @@
 		0E7D5DA7241CE4A40002B228 /* Push2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Push2.xib; sourceTree = "<group>"; };
 		0E7D5DA9241CE4BA0002B228 /* Push3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Push3.xib; sourceTree = "<group>"; };
 		0E7D5DAC2420156E0002B228 /* AnimationPushButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationPushButton.swift; sourceTree = "<group>"; };
+		0E7D5DCE2422ABE70002B228 /* ClassCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassCollectionViewController.swift; sourceTree = "<group>"; };
+		0E7D5DD12422B26A0002B228 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		0E8F03E523FDE5790085EC9C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0E8F03E723FE00310085EC9C /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		0E8F03EE24030DA30085EC9C /* Prototypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototypes.swift; sourceTree = "<group>"; };
@@ -89,6 +93,14 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		0E7D5DD02422B24F0002B228 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0E7D5DD12422B26A0002B228 /* CollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0E8F03E923FE01AD0085EC9C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,11 +133,11 @@
 		0E953F3F23FA602500A3EF72 /* NewProjectAuth */ = {
 			isa = PBXGroup;
 			children = (
+				0E7D5DD02422B24F0002B228 /* Views */,
 				0E7D5DAB242015180002B228 /* Animation */,
 				0EF21C092405179700FDAF2E /* Managers */,
 				0EF21C082405171E00FDAF2E /* Controllers */,
 				0EF21C07240516FC00FDAF2E /* Storyboards */,
-				0EF21C022404001000FDAF2E /* Protocols */,
 				0EF21BFD2403C32400FDAF2E /* Contents */,
 				0E8F03E923FE01AD0085EC9C /* Modules */,
 				0E953F4023FA602500A3EF72 /* AppDelegate.swift */,
@@ -142,13 +154,6 @@
 				0EF21BFE2403C32E00FDAF2E /* Student.json */,
 			);
 			path = Contents;
-			sourceTree = "<group>";
-		};
-		0EF21C022404001000FDAF2E /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		0EF21C07240516FC00FDAF2E /* Storyboards */ = {
@@ -171,6 +176,7 @@
 				0E953F5423FAE35100A3EF72 /* ClassTableViewController.swift */,
 				0E8F03E523FDE5790085EC9C /* ProfileViewController.swift */,
 				0E7D5D5F241ACE0B0002B228 /* ProfilePersonViewController.swift */,
+				0E7D5DCE2422ABE70002B228 /* ClassCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -320,6 +326,8 @@
 				0E8F03E823FE00320085EC9C /* Validator.swift in Sources */,
 				0E953F5923FB3A9700A3EF72 /* WelcomeViewController.swift in Sources */,
 				0E7D5DAD2420156E0002B228 /* AnimationPushButton.swift in Sources */,
+				0E7D5DCF2422ABE70002B228 /* ClassCollectionViewController.swift in Sources */,
+				0E7D5DD22422B26A0002B228 /* CollectionViewCell.swift in Sources */,
 				0E7D5D60241ACE0B0002B228 /* ProfilePersonViewController.swift in Sources */,
 				0E8F03F1240315630085EC9C /* Extensions.swift in Sources */,
 				0E953F4323FA602500A3EF72 /* SceneDelegate.swift in Sources */,
