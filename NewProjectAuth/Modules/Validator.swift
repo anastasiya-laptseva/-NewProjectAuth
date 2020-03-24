@@ -27,7 +27,7 @@ class Validator {
         return false
     }
     func checkPassword(text: String, maxLength: Int) -> Bool {
-        if text.count <= maxLength {
+        if text.count < maxLength {
             return true
         }
         return false
