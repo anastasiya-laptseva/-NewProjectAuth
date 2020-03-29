@@ -9,7 +9,9 @@
 import UIKit
 
 class AnimationPushButton {
+    
     var state = 0
+
     func pushPress(view: UIView) {
         state+=1
         switch state {
@@ -24,6 +26,7 @@ class AnimationPushButton {
             push1(view: view)
         }
     }
+    
     private func push1(view: UIView) {
         print("push1")
         //view.isUserInteractionEnabled = false
@@ -33,6 +36,7 @@ class AnimationPushButton {
             view.layoutIfNeeded()
         }
     }
+    
     private func push2(view: UIView) {
         print("push2")
         //view.layer.masksToBounds = true
@@ -41,10 +45,12 @@ class AnimationPushButton {
             view.backgroundColor = .red
         }
     }
+    
     private func push3(view: UIView) {
         print("push3")
         UIView.animate(withDuration: 1) {
             view.transform = CGAffineTransform(translationX: 0, y: -500)
         }
     }
+    
 }

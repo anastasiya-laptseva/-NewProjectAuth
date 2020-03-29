@@ -8,4 +8,5 @@ target 'NewProjectAuth' do
   # Pods for NewProjectAuth
 
 pod 'SwiftLint' 
+pod 'Alamofire', '~> 5.0'
 end

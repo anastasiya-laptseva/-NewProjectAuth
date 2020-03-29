@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        NetworkManager.shared.fetchData()
     }
     @IBAction func clickSignIn(_ sender: Any) {
         if validator.checkLogin(text: loginTextField.text ?? "") {

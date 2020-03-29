@@ -23,6 +23,19 @@ class ClassCollectionViewController: UICollectionViewController {
         genderPrototypes.append(GenderPrototype(bacgkroundColor: UIColor(rgb: 0xEABFEB)))
         genderPrototypes.append(GenderPrototype(bacgkroundColor: UIColor(rgb: 0x76D6FF)))
         students = LoadSave().loadStudents()
+        
+        for index in 0...students.count-1{
+            let fullName = NetworkManager.shared.getPeople(index: index)
+            //строка делится на массив подстрок, разделитель пробел
+            let fullNameArr = fullName.split {$0 == " "}.map(String.init)
+            //для имени берем первое значение массива
+            let name = fullNameArr.count>0 ? fullNameArr[0] : ""
+            //для фамилии второе
+            let surname = fullNameArr.count>1 ? fullNameArr[1] : ""
+            students[index].name = name
+            students[index].surname = surname
+        }
+        
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
     }
