@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -142,6 +142,32 @@
             </objects>
             <point key="canvasLocation" x="965" y="116"/>
         </scene>
+        <!--Gesture Demonstration View Controller-->
+        <scene sceneID="XCT-S3-pjg">
+            <objects>
+                <viewController id="q24-Uq-KK6" customClass="GestureDemonstrationViewController" customModule="NewProjectAuth" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xmm-p5-rOY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="autumn" translatesAutoresizingMaskIntoConstraints="NO" id="zOD-Wj-3pM">
+                                <rect key="frame" x="87" y="411" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.58081901069999997" green="0.088427625600000004" blue="0.31863921880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="X5H-R7-k1f"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KYx-In-w5o"/>
+                    <connections>
+                        <outlet property="imageSeasons" destination="zOD-Wj-3pM" id="7Zy-pF-SsG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mvg-tn-L3r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1659" y="-544"/>
+        </scene>
         <!--Welcome View Controller-->
         <scene sceneID="4SI-g4-vEJ">
             <objects>
@@ -214,6 +240,18 @@
                                     <action selector="animationButton:" destination="m9H-4C-vab" eventType="touchUpInside" id="Gbj-4U-gBq"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fId-Fh-y6q">
+                                <rect key="frame" x="40" y="630" width="334" height="50"/>
+                                <color key="backgroundColor" red="0.67537673639999996" green="0.93939012290000001" blue="0.74881449470000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="F3g-Kd-ZqT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Gesture demonstration"/>
+                                <connections>
+                                    <segue destination="q24-Uq-KK6" kind="show" id="zRA-d0-0me"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.95807705792936493" blue="0.73098264681747382" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -224,15 +262,18 @@
                             <constraint firstItem="nNj-hW-0IV" firstAttribute="trailing" secondItem="gLY-zl-LrJ" secondAttribute="trailing" id="Hkl-P9-Ati"/>
                             <constraint firstItem="1pV-b5-h8C" firstAttribute="top" secondItem="AHq-v7-lKo" secondAttribute="bottom" constant="48" id="Hlu-Oy-12r"/>
                             <constraint firstItem="AHq-v7-lKo" firstAttribute="leading" secondItem="yFR-dm-kPB" secondAttribute="leading" id="O53-KU-L7f"/>
+                            <constraint firstItem="fId-Fh-y6q" firstAttribute="top" secondItem="nNj-hW-0IV" secondAttribute="bottom" constant="200" id="QFD-gx-v7h"/>
                             <constraint firstItem="1pV-b5-h8C" firstAttribute="trailing" secondItem="AHq-v7-lKo" secondAttribute="trailing" id="R19-8j-w8i"/>
                             <constraint firstItem="gLY-zl-LrJ" firstAttribute="top" secondItem="1pV-b5-h8C" secondAttribute="bottom" constant="17" id="Rss-SA-COJ"/>
                             <constraint firstItem="wCW-ip-iWr" firstAttribute="trailing" secondItem="yFR-dm-kPB" secondAttribute="trailing" constant="40" id="YN9-8h-7c6"/>
                             <constraint firstItem="xqh-dt-aFI" firstAttribute="top" secondItem="nNj-hW-0IV" secondAttribute="bottom" constant="97" id="YVL-Th-eJ9"/>
                             <constraint firstItem="AHq-v7-lKo" firstAttribute="trailing" secondItem="yFR-dm-kPB" secondAttribute="trailing" id="ZO8-0A-kBM"/>
+                            <constraint firstItem="fId-Fh-y6q" firstAttribute="leading" secondItem="nNj-hW-0IV" secondAttribute="leading" id="cD2-YZ-pOp"/>
                             <constraint firstItem="xqh-dt-aFI" firstAttribute="centerX" secondItem="nNj-hW-0IV" secondAttribute="centerX" id="fml-W1-Ib2"/>
                             <constraint firstItem="nNj-hW-0IV" firstAttribute="top" secondItem="gLY-zl-LrJ" secondAttribute="bottom" constant="17" id="gbt-iG-AHo"/>
                             <constraint firstItem="1pV-b5-h8C" firstAttribute="leading" secondItem="AHq-v7-lKo" secondAttribute="leading" id="ilV-Ml-xdJ"/>
                             <constraint firstItem="yFR-dm-kPB" firstAttribute="leading" secondItem="wCW-ip-iWr" secondAttribute="leading" constant="40" id="kW8-Ur-UI5"/>
+                            <constraint firstItem="fId-Fh-y6q" firstAttribute="trailing" secondItem="nNj-hW-0IV" secondAttribute="trailing" id="pS7-01-EDN"/>
                             <constraint firstItem="gLY-zl-LrJ" firstAttribute="leading" secondItem="1pV-b5-h8C" secondAttribute="leading" id="qr1-3K-6uh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wCW-ip-iWr"/>
@@ -750,13 +791,14 @@
             <point key="canvasLocation" x="2928" y="1636"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="G0z-GC-E3L"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="account" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="autumn" width="200" height="128.33332824707031"/>
         <image name="camera" width="400" height="400"/>
         <image name="lock (1)" width="170.66667175292969" height="170.66667175292969"/>
         <image name="takePicture" width="313.66665649414062" height="240"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="G0z-GC-E3L"/>
-    </inferredMetricsTieBreakers>
 </document>
