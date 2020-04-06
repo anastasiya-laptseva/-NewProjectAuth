@@ -9,45 +9,32 @@ import Foundation
 import UIKit
 
 class Validator {
-    
-    func validateTextFieldLetter(textField: UITextField) -> Void {
+    func validateTextFieldLetter(textField: UITextField) {
+        // swiftlint:disable all
         let set = NSCharacterSet.init(charactersIn: "ABCDEFGHIJKLMONPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ").inverted
-        
-        if var text = textField.text{
-            if text.rangeOfCharacter(from: set) != nil {
+        // swiftlint:enable all
+        if var text = textField.text {
+            if text.rangeOfCharacter(from: set) ?? nil != nil {
                 text.removeLast()
                 textField.text = text
             }
         }
     }
-    
-    func CheckLogin(text: String) -> Bool {
-        if text.isEmpty
-        {
+    func checkLogin(text: String) -> Bool {
+        if text.isEmpty {
             return true
         }
         return false
     }
-    
-    func CheckPassword(text: String, maxLength: Int) -> Bool {
-        if text.count <= maxLength
-        {
+    func checkPassword(text: String, maxLength: Int) -> Bool {
+        if text.count < maxLength {
             return true
         }
         return false
     }
-    
-    func ShowAlert(text: String, _ sender: Any) -> Void {
+    func showAlert(text: String, _ sender: Any) {
         let alert = UIAlertController(title: "Error", message: text, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Sorry", style: UIAlertAction.Style.default, handler: nil))
         (sender as AnyObject).present(alert, animated: true, completion: nil)
     }
-    
-    
-
-    
-    
-    
-    
-    
 }
