@@ -24,6 +24,7 @@
 		0E953F5523FAE35100A3EF72 /* ClassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E953F5423FAE35100A3EF72 /* ClassTableViewController.swift */; };
 		0E953F5923FB3A9700A3EF72 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E953F5823FB3A9700A3EF72 /* WelcomeViewController.swift */; };
 		0EA034EC2436852F00826A51 /* GestureDemonstrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA034EB2436852F00826A51 /* GestureDemonstrationViewController.swift */; };
+		0EA034EE243B7DA100826A51 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA034ED243B7DA100826A51 /* SessionManager.swift */; };
 		0EF21BFF2403C32F00FDAF2E /* Student.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EF21BFE2403C32E00FDAF2E /* Student.json */; };
 		0EF21C012403C88F00FDAF2E /* JsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF21C002403C88F00FDAF2E /* JsonManager.swift */; };
 		0EF21C0624050D3500FDAF2E /* StudentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF21C0524050D3500FDAF2E /* StudentStorage.swift */; };
@@ -51,6 +52,7 @@
 		0E953F5423FAE35100A3EF72 /* ClassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTableViewController.swift; sourceTree = "<group>"; };
 		0E953F5823FB3A9700A3EF72 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		0EA034EB2436852F00826A51 /* GestureDemonstrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureDemonstrationViewController.swift; sourceTree = "<group>"; };
+		0EA034ED243B7DA100826A51 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		0EF21BFE2403C32E00FDAF2E /* Student.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Student.json; sourceTree = "<group>"; };
 		0EF21C002403C88F00FDAF2E /* JsonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonManager.swift; sourceTree = "<group>"; };
 		0EF21C0524050D3500FDAF2E /* StudentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentStorage.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			children = (
 				0EF21C0A240517D100FDAF2E /* ProfileManager.swift */,
 				0EF21C0524050D3500FDAF2E /* StudentStorage.swift */,
+				0EA034ED243B7DA100826A51 /* SessionManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			files = (
 				0E953F4523FA602500A3EF72 /* LoginViewController.swift in Sources */,
 				0EF21C012403C88F00FDAF2E /* JsonManager.swift in Sources */,
+				0EA034EE243B7DA100826A51 /* SessionManager.swift in Sources */,
 				0E953F4123FA602500A3EF72 /* AppDelegate.swift in Sources */,
 				0EF21C0624050D3500FDAF2E /* StudentStorage.swift in Sources */,
 				0E7D5DF4242A6D470002B228 /* NetworkManager.swift in Sources */,

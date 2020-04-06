@@ -32,6 +32,9 @@ class WelcomeViewController: UIViewController {
         }
         animationPushButton.pushPress(view: viewPress)
     }
+    
+    
+    
     /*
     // MARK: - Navigation
 
